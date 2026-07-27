@@ -1,0 +1,74 @@
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: .25s;
+  z-index: 999;
+}
+
+.menu-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -320px;
+  width: 300px;
+  height: 100vh;
+  background: #151d3b;
+  color: white;
+  transition: left .25s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-menu.open {
+  left: 0;
+}
+
+.menu-header {
+  padding: 30px;
+  border-bottom: 1px solid #2a315e;
+}
+
+.close-btn {
+  background: none;
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 12px;
+}
+
+.menu-items button,
+.logout-btn {
+  background: #232b4d;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.menu-items button:hover,
+.logout-btn:hover {
+  background: #2f3c6d;
+}
+
+.logout-btn {
+  margin: auto 20px 30px;
+}

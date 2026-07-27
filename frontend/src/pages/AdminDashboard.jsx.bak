@@ -1,0 +1,82 @@
+import { useEffect, useState } from "react";
+import api from "../services/api";
+
+export default function AdminDashboard() {
+  const [stats, setStats] = useState(null);
+
+  useEffect(() => {
+    loadStats();
+  }, []);
+
+  const loadStats = async () => {
+    try {
+      const response = await api.get("/admin/stats");
+      console.log("ADMIN STATS", response.data);
+
+      setStats(response.data);
+    } catch (err) {
+      console.error("Admin stats error:", err);
+    }
+  };
+
+  if (!stats) {
+    return (
+      <div style={{ padding: "20px" }}>
+        Loading Admin Dashboard...
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ padding: "30px" }}>
+      <h1>Enfiance Admin Dashboard</h1>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: "20px",
+          marginTop: "20px",
+        }}
+      >
+        <div style={cardStyle}>
+          <h3 style={{ color: "#000" }}>Total Users</h3>
+          <h2 style={{ color: "#000" }}>{stats.users}</h2>
+
+        </div>
+
+        <div style={cardStyle}>
+          <h3 style={{ color: "#000" }}>Total Wallets</h3>
+          <h2 style={{ color: "#000" }}>{stats.wallets}</h2>
+
+        </div>
+
+        <div style={cardStyle}>
+          <h3 style={{ color: "#000" }}>Total Transactions</h3>
+          <h2 style={{ color: "#000" }}>{stats.transactions}</h2>
+
+        </div>
+
+        <div style={cardStyle}>
+          <h3 style={{ color: "#000" }}>Pending Requests</h3>
+          <h2 style={{ color: "#000" }}>{stats.pendingRequests}</h2>
+
+        </div>
+
+        <div style={cardStyle}>
+          <h3 style={{ color: "#000" }}>Total Platform Balance</h3>
+          <h2 style={{ color: "#000" }}>${stats.totalBalance}</h2>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const cardStyle = {
+  padding: "20px",
+  border: "1px solid #ddd",
+  borderRadius: "10px",
+  background: "#fff",
+  color: "#000",
+  boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+};

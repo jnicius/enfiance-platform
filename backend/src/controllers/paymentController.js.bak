@@ -1,0 +1,228 @@
+const prisma = require('../config/database');
+
+const {
+  sendUSDC,
+} = require('../services/tokenService');
+
+async function sendPayment(req, res) {
+  try {
+
+    return res.json({
+      success: true,
+      message: 'sendPayment placeholder'
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    return res.status(500).json({
+      success: false,
+      message: 'Payment failed'
+    });
+  }
+}
+
+async function createPaymentRequest(
+  req,
+  res
+) {
+
+  try {
+
+    const amount =
+      Number(req.body.amount);
+
+    if (
+      isNaN(amount) ||
+      amount <= 0
+    ) {
+
+      return res.status(400).json({
+        success: false,
+        message:
+          'Invalid amount',
+      });
+    }
+
+    const userId =
+      req.user.userId;
+
+    const user =
+      await prisma.user.findUnique({
+
+        where: {
+          id: userId,
+        },
+      });
+
+    if (!user) {
+
+      return res.status(404).json({
+        success: false,
+        message:
+          'User not found',
+      });
+    }
+
+    const requestId =
+      `RQ-${Math.random()
+        .toString(36)
+        .substring(2, 10)
+        .toUpperCase()}`;
+
+    const paymentRequest =
+      await prisma.paymentRequest.create({
+
+        data: {
+
+          requestId,
+
+          requesterId:
+            userId,
+
+          requesterUsername:
+            user.username,
+
+          amount,
+
+          status:
+            'pending',
+        },
+      });
+
+    return res.json({
+
+      success: true,
+
+      request:
+        paymentRequest,
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    return res.status(500).json({
+
+      success: false,
+
+      message:
+        'Failed to create request',
+    });
+  }
+}
+
+
+async function getPaymentRequests(
+  req,
+  res
+) {
+
+  try {
+
+    const userId =
+      req.user.userId;
+
+    const requests =
+      await prisma.paymentRequest.findMany({
+
+        where: {
+          requesterId: userId,
+        },
+
+        orderBy: {
+          createdAt: 'desc',
+        },
+      });
+
+    return res.json({
+
+      success: true,
+
+      requests,
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    return res.status(500).json({
+
+      success: false,
+
+      message:
+        'Failed to load requests',
+    });
+  }
+}
+async function payRequest(req, res) {
+
+  try {
+
+    console.log(
+      'PAY REQUEST HIT'
+    );
+
+    const { requestId } =
+      req.params;
+
+    const paymentRequest =
+      await prisma.paymentRequest.findUnique({
+        where: {
+          requestId,
+        },
+      });
+
+    if (!paymentRequest) {
+
+      return res.status(404).json({
+        success: false,
+        message: 'Request not found',
+      });
+    }
+
+    if (
+      paymentRequest.status === 'paid'
+    ) {
+
+      return res.status(400).json({
+        success: false,
+        message: 'Request already paid',
+      });
+    }
+
+    await prisma.paymentRequest.update({
+      where: {
+        requestId,
+      },
+      data: {
+        status: 'paid',
+      },
+    });
+
+    return res.json({
+      success: true,
+      message: 'Payment completed',
+    });
+
+  } catch (error) {
+
+    console.error(
+      'PAY REQUEST ERROR:',
+      error
+    );
+
+    return res.status(500).json({
+      success: false,
+      message: 'Payment failed',
+    });
+  }
+}
+
+module.exports = {
+  sendPayment,
+  createPaymentRequest,
+  getPaymentRequests,
+  payRequest,
+};

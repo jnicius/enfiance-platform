@@ -1,0 +1,151 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Contact {
+  id String @id @default(uuid())
+
+  ownerId String
+
+  recipientId String?
+
+  recipientName String?
+
+  recipientEmail String?
+
+  recipientWallet String
+
+  createdAt DateTime @default(now())
+
+  owner User @relation("UserContacts", fields: [ownerId], references: [id])
+
+  recipient User? @relation("RecipientContact", fields: [recipientId], references: [id])
+
+  @@unique([ownerId, recipientWallet])
+}
+
+model User {
+  id       String  @id @default(uuid())
+  email    String  @unique
+  username String? @unique
+
+  role String @default("USER")
+  
+  balance Float @default(0)
+  password String
+
+  firstName String?
+  lastName  String?
+
+  passwordResetToken   String?
+  passwordResetExpires DateTime?
+
+  createdAt DateTime @default(now())
+
+  wallet Wallet?
+
+  contacts Contact[] @relation("UserContacts")
+
+  receivedContacts Contact[] @relation("RecipientContact")
+
+  transactions Transaction[]
+
+  paymentRequests PaymentRequest[]
+
+}
+
+model Wallet {
+  id           String @id @default(uuid())
+  address      String @unique
+  encryptedKey String
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model Transaction {
+  id String @id @default(uuid())
+
+  sender   String
+  receiver String
+
+  receiverUsername String?
+  receiverEmail    String?
+  displayName      String?
+
+  amount Float
+  asset  String
+
+  status String
+  type   String?
+  txHash String?
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model TransactionHistory {
+  id String @id @default(uuid())
+
+  sender String
+
+  sender_username String?
+
+  recipient String
+
+  recipient_username String?
+
+  recipient_wallet String?
+
+  amount Float
+
+  signature String
+
+  status String
+
+  created_at DateTime @default(now())
+
+}
+
+model PaymentRequest {
+  id String @id @default(uuid())
+
+  requestId String @unique
+
+  requesterId String
+
+  requesterUsername String?
+
+  recipientId String?
+
+  recipientUsername String?
+
+  recipientEmail String?
+
+  recipientPhone String?
+
+  amount Float
+
+  message String?
+
+  status String @default("pending")
+
+  createdAt DateTime @default(now())
+
+  expiresAt DateTime?
+
+  requester User @relation(fields: [requesterId], references: [id])
+
+  @@index([requesterId])
+  @@index([recipientId])
+  @@index([status])
+}
