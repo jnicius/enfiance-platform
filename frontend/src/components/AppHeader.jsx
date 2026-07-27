@@ -1,8 +1,17 @@
+import { useNavigate } from 'react-router-dom';
+
+import {
+  Menu,
+  Bell,
+  CircleUserRound,
+} from 'lucide-react';
+
 export default function AppHeader({
   firstName,
   onMenu,
-  onLogout,
 }) {
+  const navigate = useNavigate();
+
   return (
     <header className="app-header">
       <div className="app-header-left">
@@ -11,7 +20,7 @@ export default function AppHeader({
           onClick={onMenu}
           title="Menu"
         >
-          ☰
+          <Menu size={20} />
         </button>
 
         <div className="brand">
@@ -24,15 +33,20 @@ export default function AppHeader({
           className="notification-button"
           title="Notifications"
         >
-          🔔
+          <Bell size={18} />
         </button>
 
         <button
           className="profile-button"
-          onClick={onLogout}
-          title="Logout"
+          onClick={() => navigate('/profile')}
+          title="Profile"
         >
-          👤 {firstName}
+          <CircleUserRound
+            size={18}
+            style={{ marginRight: '8px' }}
+          />
+
+          {firstName}
         </button>
       </div>
     </header>

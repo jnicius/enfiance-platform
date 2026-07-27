@@ -12,6 +12,7 @@
   "dependencies": {
     "@ramp-network/ramp-instant-sdk": "^6.2.0",
     "axios": "^1.16.0",
+    "lucide-react": "^1.27.0",
     "qrcode.react": "^4.2.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",

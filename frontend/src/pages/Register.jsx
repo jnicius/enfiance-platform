@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+
+import AuthLayout from '../components/auth/AuthLayout';
 
 export default function Register() {
 
@@ -77,23 +80,18 @@ export default function Register() {
 
   return (
 
-    <div className="min-h-screen bg-[#050816] flex items-center justify-center px-6">
+    <AuthLayout
+      title="Create your account"
+      subtitle="Secure international payments made simple."
+      footer={
+        <>
+          Already have an account?{" "}
+          <Link to="/login">Sign In</Link>
+        </>
+      }
+    >
 
-      <div className="w-full max-w-md bg-[#0B1120] border border-white/10 rounded-3xl p-10 shadow-2xl">
-
-        <div className="text-center mb-10">
-
-          <h1 className="text-4xl font-bold text-[#D4AF37] mb-3">
-            ENFIANCE
-          </h1>
-
-          <p className="text-gray-400">
-            Create your account
-          </p>
-
-        </div>
-
-        <form
+      <form
           onSubmit={handleRegister}
           className="space-y-6"
         >
@@ -234,7 +232,7 @@ export default function Register() {
 
             disabled={loading}
 
-            className="w-full bg-[#D4AF37] hover:bg-[#e8c85a] text-black font-bold py-4 rounded-2xl transition"
+            className="auth-button"
           >
 
             {
@@ -246,9 +244,6 @@ export default function Register() {
           </button>
 
         </form>
-
-      </div>
-
-    </div>
+     </AuthLayout>
   );
 }

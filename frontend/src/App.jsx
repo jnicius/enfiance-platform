@@ -6,31 +6,31 @@ import {
 } from 'react-router-dom';
 
 import Login from './pages/Login';
-
 import Register from './pages/Register';
-
 import Dashboard from './pages/DashboardV2';
-
 import ForgotPassword from './pages/ForgotPassword';
-
 import ResetPassword from './pages/ResetPassword';
-
 import PayRequest from './pages/PayRequest';
+import Profile from './pages/Profile';
 
-import AdminDashboard from "./pages/AdminDashboard";
+import AdminDashboard from './pages/AdminDashboard';
 
-import AdminRoute from "./components/AdminRoute";
+import AdminRoute from './components/AdminRoute';
+
+import HomeV2 from './pages/HomeV2';
 
 function App() {
-
-  const token =
-    localStorage.getItem('token');
+  const token = localStorage.getItem('token');
 
   return (
+      
 
-    <BrowserRouter>
-
+   <BrowserRouter>
       <Routes>
+        <Route
+          path="/home-v2"
+          element={<HomeV2 />}
+        />
 
         {/* LOGIN */}
 
@@ -38,7 +38,7 @@ function App() {
           path="/login"
           element={
             token
-              ? <Navigate to="/dashboard" />
+              ? <Navigate to="/dashboard" replace />
               : <Login />
           }
         />
@@ -49,7 +49,7 @@ function App() {
           path="/register"
           element={
             token
-              ? <Navigate to="/dashboard" />
+              ? <Navigate to="/dashboard" replace />
               : <Register />
           }
         />
@@ -58,18 +58,14 @@ function App() {
 
         <Route
           path="/forgot-password"
-          element={
-            <ForgotPassword />
-          }
+          element={<ForgotPassword />}
         />
 
         {/* RESET PASSWORD */}
 
         <Route
           path="/reset-password/:token"
-          element={
-            <ResetPassword />
-          }
+          element={<ResetPassword />}
         />
 
         {/* DASHBOARD */}
@@ -79,20 +75,38 @@ function App() {
           element={
             token
               ? <Dashboard />
-              : <Navigate to="/login" />
+              : <Navigate to="/login" replace />
           }
         />
 
+        {/* PROFILE */}
 
-         <Route
-           path="/admin"
-           element={
-             <AdminRoute>
-               <AdminDashboard />
-             </AdminRoute>
-           }
+        <Route
+          path="/profile"
+          element={
+            token
+              ? <Profile />
+              : <Navigate to="/login" replace />
+          }
         />
 
+        {/* ADMIN */}
+
+        <Route
+          path="/admin"
+          element={
+            <AdminRoute>
+              <AdminDashboard />
+            </AdminRoute>
+          }
+        />
+
+        {/* PAYMENT REQUEST */}
+
+        <Route
+          path="/pay/:requestId"
+          element={<PayRequest />}
+        />
 
         {/* DEFAULT */}
 
@@ -105,16 +119,12 @@ function App() {
                   ? '/dashboard'
                   : '/login'
               }
+              replace
             />
           }
         />
-         <Route
-  path="/pay/:requestId"
-  element={<PayRequest />}
-/>
 
       </Routes>
-
     </BrowserRouter>
   );
 }

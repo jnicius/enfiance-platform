@@ -1,3 +1,12 @@
+import {
+  CreditCard,
+  SendHorizontal,
+  HandCoins,
+  ChartColumnIncreasing,
+  BadgeCheck,
+} from 'lucide-react';
+
+
 export default function BalanceHero({
   firstName,
   balance,
@@ -26,29 +35,36 @@ export default function BalanceHero({
   return (
     <div className="balance-hero">
       <div className="balance-title">
-        {greeting()}, {firstName} 👋
+        {greeting()},
       </div>
 
-      <div className="balance-amount">
-        ${formatBalance(balance)}
+      <div className="balance-name">
+        {firstName}
       </div>
 
-      <p
+      <div
         style={{
-          color: "var(--muted)",
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+          color: "#4ade80",
           marginBottom: "30px",
-          fontSize: "16px",
+          fontWeight: 600,
         }}
-      >
-        Your account is verified and ready to send and receive money.
-      </p>
+       >
+        <BadgeCheck size={18} />
+
+        Verified Account
+      </div>
 
       <div className="action-grid">
         <div
           className="action-card"
           onClick={onAddMoney}
         >
-          <div className="action-icon">💳</div>
+          <div className="action-icon">
+            <CreditCard size={28} />
+          </div>
 
           <div className="action-title">
             Add Money
@@ -69,7 +85,9 @@ export default function BalanceHero({
           className="action-card"
           onClick={onSend}
         >
-          <div className="action-icon">📤</div>
+          <div className="action-icon">
+            <SendHorizontal size={28} />
+          </div>
 
           <div className="action-title">
             Send
@@ -90,7 +108,9 @@ export default function BalanceHero({
           className="action-card"
           onClick={onRequest}
         >
-          <div className="action-icon">📥</div>
+          <div className="action-icon">
+            <HandCoins size={28} />
+          </div>
 
           <div className="action-title">
             Request
@@ -111,7 +131,9 @@ export default function BalanceHero({
           className="action-card"
           onClick={onActivity}
         >
-          <div className="action-icon">📊</div>
+          <div className="action-icon">
+            <ChartColumnIncreasing size={28} />
+          </div>
 
           <div className="action-title">
             Activity
