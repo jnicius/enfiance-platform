@@ -35,11 +35,15 @@ const {
 // LOAD TREASURY WALLET
 // -------------------------
 
+const TREASURY_KEY_PATH =
+  process.env.TREASURY_KEY_PATH ||
+  '/home/enfigrd/.enfiance-secrets/treasury-wallet.json';
+
 const treasurySecretKey =
   Uint8Array.from(
     JSON.parse(
       fs.readFileSync(
-        './treasury/master-wallet.json',
+        TREASURY_KEY_PATH,
         'utf8'
       )
     )

@@ -51,3 +51,19 @@ Thumbs.db
 # Misc
 # ==========================
 coverage/
+
+# ==========================
+# Enfiance Secrets
+# ==========================
+
+.env
+.env.*
+backend/.env
+backend/.env.*
+backend/treasury/master-wallet.json
+backend/treasury/*.json
+*.pre-wallet-key-migration
+.enfiance-secrets/
+
+# Local migration backups
+*.pre-treasury-migration
