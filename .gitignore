@@ -42,6 +42,9 @@ Thumbs.db
 *.zip
 *.sql
 
+# Track Prisma database migrations
+!backend/prisma/migrations/**/migration.sql
+
 # ==========================
 # PM2
 # ==========================
