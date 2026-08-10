@@ -13,10 +13,6 @@ module.exports = function (
     const authHeader =
       req.headers.authorization;
 
-    console.log(
-      'AUTH HEADER:',
-      authHeader
-    );
 
     if (!authHeader) {
 
@@ -45,10 +41,6 @@ module.exports = function (
         process.env.JWT_SECRET
       );
 
-    console.log(
-      'DECODED USER:',
-      decoded
-    );
 
     req.user = decoded;
 
