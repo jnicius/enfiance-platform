@@ -324,95 +324,68 @@ router.post(
 
 
       // -------------------------
-      // INTERNAL LEDGER TRANSFER
+      // LIVE SOLANA USDC TRANSFER
       // -------------------------
 
-      // -------------------------
-      // VALIDATION
-      // -------------------------
+      amount = Number(amount);
 
       if (
-        !amount ||
-        isNaN(amount) ||
+        !Number.isFinite(amount) ||
         amount <= 0
       ) {
-
         return res.status(400).json({
           success: false,
           message: 'Invalid amount'
         });
-
       }
 
       if (
+        recipientUser &&
         senderUser.id === recipientUser.id
       ) {
-
         return res.status(400).json({
           success: false,
           message: 'Cannot send money to yourself'
         });
-
       }
 
-      if (
-        senderUser.balance < amount
-      ) {
+      const liveBalance =
+        await getUSDCBalance(
+          senderWallet
+        );
 
+      console.log(
+        'LIVE USDC BALANCE:',
+        liveBalance
+      );
+
+      if (liveBalance < amount) {
         return res.status(400).json({
           success: false,
-          message: 'Insufficient balance'
+          message:
+            'Not enough money to perform this transaction. Please add more funds.'
         });
-
       }
 
+      console.log(
+        'SENDING LIVE USDC:',
+        amount,
+        senderWallet,
+        '→',
+        recipientWallet
+      );
 
+      const signature =
+        await sendUSDC(
+          senderSecretKey,
+          recipientWallet,
+          amount
+        );
 
-      await prisma.$transaction([
-
-        prisma.user.update({
-          where: {
-            id: senderUser.id
-          },
-          data: {
-            balance: {
-              decrement: amount
-            }
-    
-         }
-       }),
-
-       prisma.user.update({
-         where: {
-           id: recipientUser.id
-         },
-         data: {
-           balance: {
-             increment: amount
-           }
-         }
-       })
-
-     ]);
-
-     const signature =
-       `LEDGER-${Date.now()}`;
-
-     console.log(
-
-       'INTERNAL TRANSFER:',
-       amount,
-       senderUser.username,
-       '→',
-       recipientUser.username
-     );
-
-        
-     console.log(
-       'SEND RESULT:',
-       signature
-     );
-
+      console.log(
+        'SOLANA SEND RESULT:',
+        signature
+      );
 
       // -------------------------
       // SAVE CONTACT
