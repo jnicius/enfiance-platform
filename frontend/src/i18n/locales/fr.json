@@ -161,6 +161,7 @@
     "paymentRequestCreated": "Demande de paiement créée avec succès",
     "paymentRequestFailed": "Impossible de créer la demande",
     "payRequestFailed": "Impossible de payer la demande",
-    "walletNotFound": "Compte introuvable"
+    "walletNotFound": "Compte introuvable",
+    "balance": "Solde"
   }
 }

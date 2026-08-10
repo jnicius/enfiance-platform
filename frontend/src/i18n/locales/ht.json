@@ -161,6 +161,7 @@
     "paymentRequestCreated": "Demann peman an kreye avèk siksè",
     "paymentRequestFailed": "Nou pa t kapab kreye demann lan",
     "payRequestFailed": "Nou pa t kapab peye demann lan",
-    "walletNotFound": "Kont lan pa jwenn"
+    "walletNotFound": "Kont lan pa jwenn",
+    "balance": "Balans"
   }
 }

@@ -67,6 +67,15 @@ export default function BalanceHero({
       </div>
 
       <div className="action-grid">
+
+        <div className="balance-title">
+          {t('dashboard.balance')}
+        </div>
+
+        <div className="balance-amount">
+          ${formatBalance(balance)}
+        </div>
+
         <div
           className="action-card"
           onClick={onAddMoney}

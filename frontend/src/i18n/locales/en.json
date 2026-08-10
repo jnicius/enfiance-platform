@@ -161,6 +161,7 @@
     "paymentRequestCreated": "Payment request created successfully",
     "paymentRequestFailed": "Failed to create request",
     "payRequestFailed": "Failed to pay request",
-    "walletNotFound": "Wallet not found"
+    "walletNotFound": "Wallet not found",
+    "balance": "Balance"
   }
 }

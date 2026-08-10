@@ -46,18 +46,35 @@ router.get(
 
     try {
 
-      const user =
-        await prisma.user.findUnique({
-          where: {
-            id: req.user.userId
-          }
-        });
+        const wallet =
+          await prisma.wallet.findUnique({
+            where: {
+              userId: req.user.userId
+            }
+          });
 
-       res.json({
-         success: true,
-         sol: 0,
-         usdc: user.balance || 0
-       });
+        if (!wallet) {
+          return res.status(404).json({
+            success: false,
+            message: 'Wallet not found'
+          });
+        }
+
+        const solBalance =
+          await getSolBalance(
+            wallet.address
+          );
+
+        const usdcBalance =
+          await getUSDCBalance(
+            wallet.address
+          );
+
+        res.json({
+          success: true,
+          sol: solBalance,
+          usdc: usdcBalance
+        });
 
 
     } catch (error) {
