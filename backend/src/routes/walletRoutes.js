@@ -1,4 +1,5 @@
 const express = require('express');
+const { rateLimit } = require('express-rate-limit');
 
 const authMiddleware =
   require(
@@ -93,12 +94,34 @@ router.get(
 );
 
 // -------------------------
+// SEND RATE LIMIT
+// -------------------------
+
+const sendRateLimiter =
+  rateLimit({
+    windowMs: 60 * 1000,
+    limit: 5,
+    standardHeaders: 'draft-8',
+    legacyHeaders: false,
+
+    keyGenerator: (req) =>
+      req.user.userId,
+
+    message: {
+      success: false,
+      message:
+        'Too many transfer attempts. Please wait a minute and try again.'
+    }
+  });
+
+// -------------------------
 // SEND USDC
 // -------------------------
 
 router.post(
   '/send',
   authMiddleware,
+  sendRateLimiter,
 
   async (req, res) => {
 
@@ -121,11 +144,6 @@ router.post(
       // -------------------------
       // AUTHENTICATED USER
       // -------------------------
-
-      console.log(
-        'REQ USER:',
-        req.user
-      );
 
       const senderUser =
         await prisma.user.findUnique({
