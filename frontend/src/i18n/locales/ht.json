@@ -11,10 +11,18 @@
     "loading": "Ap chaje..."
   },
   "navigation": {
-    "dashboard": "Tablo",
+    "dashboard": "Paj prensipal",
     "profile": "Pwofil",
     "contacts": "Kontak",
-    "activity": "Aktivite"
+    "activity": "Aktivite",
+    "walletTagline": "Bous dijital ou",
+    "transactions": "Tranzaksyon",
+    "paymentRequests": "Demann peman",
+    "settings": "Paramèt",
+    "logout": "Dekonekte",
+    "menu": "Meni",
+    "notifications": "Notifikasyon",
+    "closeMenu": "Fèmen meni an"
   },
   "money": {
     "balance": "Balans",
@@ -41,5 +49,58 @@
     "noAccount": "Ou poko gen yon kont?",
     "createOne": "Kreye youn",
     "failed": "Koneksyon an echwe"
+  },
+  "register": {
+    "title": "Kreye kont ou",
+    "subtitle": "Peman entènasyonal ki an sekirite, vin pi senp.",
+    "alreadyHaveAccount": "Ou deja gen yon kont?",
+    "signIn": "Konekte",
+    "fullName": "Non konplè",
+    "email": "Imèl",
+    "password": "Modpas",
+    "confirmPassword": "Konfime modpas",
+    "show": "Montre",
+    "hide": "Kache",
+    "creatingAccount": "Ap kreye kont...",
+    "register": "Kreye kont",
+    "passwordsDoNotMatch": "Modpas yo pa menm.",
+    "success": "Kont lan kreye avèk siksè",
+    "failed": "Nou pa t kapab kreye kont lan"
+  },
+  "forgotPassword": {
+    "title": "Ou bliye modpas ou?",
+    "subtitle": "Antre adrès imèl ou epi n ap voye yon lyen an sekirite pou ou reyajiste modpas ou.",
+    "rememberPassword": "Ou sonje modpas ou?",
+    "signIn": "Konekte",
+    "emailAddress": "Adrès imèl",
+    "sending": "Ap voye...",
+    "sendResetLink": "Voye lyen pou reyajiste",
+    "instructionsSent": "Si kont lan egziste, nou voye enstriksyon pou reyajiste modpas la."
+  },
+  "resetPassword": {
+    "title": "Kreye yon nouvo modpas",
+    "subtitle": "Chwazi yon modpas solid pou pwoteje kont ou.",
+    "rememberPassword": "Ou sonje modpas ou?",
+    "signIn": "Konekte",
+    "newPassword": "Nouvo modpas",
+    "confirmPassword": "Konfime modpas",
+    "resetting": "Ap reyajiste...",
+    "resetPassword": "Reyajiste modpas",
+    "passwordsDoNotMatch": "Modpas yo pa menm.",
+    "failed": "Nou pa t kapab reyajiste modpas la."
+  },
+  "dashboard": {
+    "greetingMorning": "Bonjou",
+    "greetingAfternoon": "Bon aprèmidi",
+    "greetingEvening": "Bonswa",
+    "verifiedAccount": "Kont verifye",
+    "addMoney": "Ajoute lajan",
+    "fundAccount": "Mete lajan nan kont ou",
+    "send": "Voye",
+    "transferMoney": "Transfere lajan",
+    "request": "Mande",
+    "requestPayment": "Mande yon peman",
+    "activity": "Aktivite",
+    "viewTransactions": "Gade tranzaksyon yo"
   }
 }

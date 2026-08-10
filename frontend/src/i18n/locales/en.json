@@ -14,7 +14,15 @@
     "dashboard": "Dashboard",
     "profile": "Profile",
     "contacts": "Contacts",
-    "activity": "Activity"
+    "activity": "Activity",
+    "walletTagline": "Your Digital Wallet",
+    "transactions": "Transactions",
+    "paymentRequests": "Payment Requests",
+    "settings": "Settings",
+    "logout": "Logout",
+    "menu": "Menu",
+    "notifications": "Notifications",
+    "closeMenu": "Close menu"
   },
   "money": {
     "balance": "Balance",
@@ -41,5 +49,58 @@
     "noAccount": "Don't have an account?",
     "createOne": "Create one",
     "failed": "Login failed"
+  },
+  "register": {
+    "title": "Create your account",
+    "subtitle": "Secure international payments made simple.",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign In",
+    "fullName": "Full Name",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "show": "Show",
+    "hide": "Hide",
+    "creatingAccount": "Creating Account...",
+    "register": "Register",
+    "passwordsDoNotMatch": "Passwords do not match.",
+    "success": "Registration successful",
+    "failed": "Registration failed"
+  },
+  "forgotPassword": {
+    "title": "Forgot your password?",
+    "subtitle": "Enter your email address and we'll send you a secure password reset link.",
+    "rememberPassword": "Remember your password?",
+    "signIn": "Sign In",
+    "emailAddress": "Email Address",
+    "sending": "Sending...",
+    "sendResetLink": "Send Reset Link",
+    "instructionsSent": "If an account exists, reset instructions have been sent."
+  },
+  "resetPassword": {
+    "title": "Create a new password",
+    "subtitle": "Choose a strong password to secure your account.",
+    "rememberPassword": "Remember your password?",
+    "signIn": "Sign In",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "resetting": "Resetting...",
+    "resetPassword": "Reset Password",
+    "passwordsDoNotMatch": "Passwords do not match.",
+    "failed": "Reset failed."
+  },
+  "dashboard": {
+    "greetingMorning": "Good Morning",
+    "greetingAfternoon": "Good Afternoon",
+    "greetingEvening": "Good Evening",
+    "verifiedAccount": "Verified Account",
+    "addMoney": "Add Money",
+    "fundAccount": "Fund your account",
+    "send": "Send",
+    "transferMoney": "Transfer money",
+    "request": "Request",
+    "requestPayment": "Request a payment",
+    "activity": "Activity",
+    "viewTransactions": "View transactions"
   }
 }

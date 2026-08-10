@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 
 import AuthLayout from '../components/auth/AuthLayout';
 
 export default function ForgotPassword() {
+const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
@@ -23,11 +25,11 @@ export default function ForgotPassword() {
       );
 
       setMessage(
-        'If an account exists, reset instructions have been sent.'
+        t('forgotPassword.instructionsSent')
       );
     } catch (err) {
       setMessage(
-        'If an account exists, reset instructions have been sent.'
+        t('forgotPassword.instructionsSent')
       );
     } finally {
       setLoading(false);
@@ -36,13 +38,13 @@ export default function ForgotPassword() {
 
   return (
     <AuthLayout
-      title="Forgot your password?"
-      subtitle="Enter your email address and we'll send you a secure password reset link."
+      title={t('forgotPassword.title')}
+      subtitle={t('forgotPassword.subtitle')}
       footer={
         <>
-          Remember your password?{' '}
+          {t('forgotPassword.rememberPassword')}{' '}
           <Link to="/login">
-            Sign In
+            {t('forgotPassword.signIn')}
           </Link>
         </>
       }
@@ -54,7 +56,7 @@ export default function ForgotPassword() {
         <input
           className="auth-input"
           type="email"
-          placeholder="Email Address"
+          placeholder={t('forgotPassword.emailAddress')}
           value={email}
           onChange={(e) =>
             setEmail(e.target.value)
@@ -68,8 +70,8 @@ export default function ForgotPassword() {
           disabled={loading}
         >
           {loading
-            ? 'Sending...'
-            : 'Send Reset Link'}
+            ? t('forgotPassword.sending')
+            : t('forgotPassword.sendResetLink')}
         </button>
 
         {message && (

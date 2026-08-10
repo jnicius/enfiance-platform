@@ -14,7 +14,15 @@
     "dashboard": "Tableau de bord",
     "profile": "Profil",
     "contacts": "Contacts",
-    "activity": "Activité"
+    "activity": "Activité",
+    "walletTagline": "Votre portefeuille numérique",
+    "transactions": "Transactions",
+    "paymentRequests": "Demandes de paiement",
+    "settings": "Paramètres",
+    "logout": "Déconnexion",
+    "menu": "Menu",
+    "notifications": "Notifications",
+    "closeMenu": "Fermer le menu"
   },
   "money": {
     "balance": "Solde",
@@ -41,5 +49,58 @@
     "noAccount": "Vous n'avez pas de compte ?",
     "createOne": "Créer un compte",
     "failed": "Échec de la connexion"
+  },
+  "register": {
+    "title": "Créez votre compte",
+    "subtitle": "Les paiements internationaux sécurisés en toute simplicité.",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "signIn": "Se connecter",
+    "fullName": "Nom complet",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "show": "Afficher",
+    "hide": "Masquer",
+    "creatingAccount": "Création du compte...",
+    "register": "Créer un compte",
+    "passwordsDoNotMatch": "Les mots de passe ne correspondent pas.",
+    "success": "Inscription réussie",
+    "failed": "Échec de l'inscription"
+  },
+  "forgotPassword": {
+    "title": "Mot de passe oublié ?",
+    "subtitle": "Saisissez votre adresse e-mail et nous vous enverrons un lien sécurisé pour réinitialiser votre mot de passe.",
+    "rememberPassword": "Vous vous souvenez de votre mot de passe ?",
+    "signIn": "Se connecter",
+    "emailAddress": "Adresse e-mail",
+    "sending": "Envoi...",
+    "sendResetLink": "Envoyer le lien",
+    "instructionsSent": "Si un compte existe, les instructions de réinitialisation ont été envoyées."
+  },
+  "resetPassword": {
+    "title": "Créez un nouveau mot de passe",
+    "subtitle": "Choisissez un mot de passe robuste pour sécuriser votre compte.",
+    "rememberPassword": "Vous vous souvenez de votre mot de passe ?",
+    "signIn": "Se connecter",
+    "newPassword": "Nouveau mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "resetting": "Réinitialisation...",
+    "resetPassword": "Réinitialiser le mot de passe",
+    "passwordsDoNotMatch": "Les mots de passe ne correspondent pas.",
+    "failed": "Échec de la réinitialisation."
+  },
+  "dashboard": {
+    "greetingMorning": "Bonjour",
+    "greetingAfternoon": "Bon après-midi",
+    "greetingEvening": "Bonsoir",
+    "verifiedAccount": "Compte vérifié",
+    "addMoney": "Ajouter de l'argent",
+    "fundAccount": "Alimenter votre compte",
+    "send": "Envoyer",
+    "transferMoney": "Transférer de l'argent",
+    "request": "Demander",
+    "requestPayment": "Demander un paiement",
+    "activity": "Activité",
+    "viewTransactions": "Voir les transactions"
   }
 }

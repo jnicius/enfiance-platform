@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 
 import AuthLayout from '../components/auth/AuthLayout';
 
 export default function Register() {
+const { t } = useTranslation();
 
   const [form, setForm] = useState({
     name: '',
@@ -38,7 +40,7 @@ export default function Register() {
     ) {
 
       alert(
-        'Passwords do not match'
+        t('register.passwordsDoNotMatch')
       );
 
       return;
@@ -58,7 +60,7 @@ export default function Register() {
       );
 
       alert(
-        'Registration successful'
+        t('register.success')
       );
 
       window.location.href =
@@ -68,7 +70,7 @@ export default function Register() {
 
       alert(
         err?.response?.data?.message ||
-        'Registration failed'
+        t('register.failed')
       );
 
     } finally {
@@ -81,12 +83,14 @@ export default function Register() {
   return (
 
     <AuthLayout
-      title="Create your account"
-      subtitle="Secure international payments made simple."
+      title={t('register.title')}
+      subtitle={t('register.subtitle')}
       footer={
         <>
-          Already have an account?{" "}
-          <Link to="/login">Sign In</Link>
+          {t('register.alreadyHaveAccount')}{' '}
+          <Link to="/login">
+        {t('register.signIn')}
+      </Link>
         </>
       }
     >
@@ -101,7 +105,7 @@ export default function Register() {
           <input
             type="text"
 
-            placeholder="Full Name"
+            placeholder={t('register.fullName')}
 
             value={form.name}
 
@@ -120,7 +124,7 @@ export default function Register() {
           <input
             type="email"
 
-            placeholder="Email"
+            placeholder={t('register.email')}
 
             value={form.email}
 
@@ -145,7 +149,7 @@ export default function Register() {
                   : 'password'
               }
 
-              placeholder="Password"
+              placeholder={t('register.password')}
 
               value={form.password}
 
@@ -172,8 +176,8 @@ export default function Register() {
             >
               {
                 showPassword
-                  ? 'Hide'
-                  : 'Show'
+                  ? t('register.hide')
+                  : t('register.show')
               }
             </button>
 
@@ -190,7 +194,7 @@ export default function Register() {
                   : 'password'
               }
 
-              placeholder="Confirm Password"
+              placeholder={t('register.confirmPassword')}
 
               value={form.confirmPassword}
 
@@ -218,8 +222,8 @@ export default function Register() {
             >
               {
                 showConfirmPassword
-                  ? 'Hide'
-                  : 'Show'
+                  ? t('register.hide')
+                  : t('register.show')
               }
             </button>
 
@@ -237,8 +241,8 @@ export default function Register() {
 
             {
               loading
-                ? 'Creating Account...'
-                : 'Register'
+                ? t('register.creatingAccount')
+                : t('register.register')
             }
 
           </button>

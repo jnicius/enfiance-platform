@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import {
   CreditCard,
   SendHorizontal,
@@ -5,7 +7,6 @@ import {
   ChartColumnIncreasing,
   BadgeCheck,
 } from 'lucide-react';
-
 
 export default function BalanceHero({
   firstName,
@@ -15,18 +16,26 @@ export default function BalanceHero({
   onRequest,
   onActivity,
 }) {
+  const { t } = useTranslation();
+
   const greeting = () => {
     const hour = new Date().getHours();
 
-    if (hour < 12) return "Good Morning";
-    if (hour < 18) return "Good Afternoon";
-    return "Good Evening";
+    if (hour < 12) {
+      return t('dashboard.greetingMorning');
+    }
+
+    if (hour < 18) {
+      return t('dashboard.greetingAfternoon');
+    }
+
+    return t('dashboard.greetingEvening');
   };
 
   const formatBalance = (value) => {
     const amount = Number(value || 0);
 
-    return amount.toLocaleString("en-US", {
+    return amount.toLocaleString('en-US', {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
@@ -44,17 +53,17 @@ export default function BalanceHero({
 
       <div
         style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "8px",
-          color: "#4ade80",
-          marginBottom: "30px",
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          color: '#4ade80',
+          marginBottom: '30px',
           fontWeight: 600,
         }}
-       >
+      >
         <BadgeCheck size={18} />
 
-        Verified Account
+        {t('dashboard.verifiedAccount')}
       </div>
 
       <div className="action-grid">
@@ -67,17 +76,17 @@ export default function BalanceHero({
           </div>
 
           <div className="action-title">
-            Add Money
+            {t('dashboard.addMoney')}
           </div>
 
           <div
             style={{
-              color: "var(--muted)",
+              color: 'var(--muted)',
               marginTop: 6,
               fontSize: 14,
             }}
           >
-            Fund your account
+            {t('dashboard.fundAccount')}
           </div>
         </div>
 
@@ -90,17 +99,17 @@ export default function BalanceHero({
           </div>
 
           <div className="action-title">
-            Send
+            {t('dashboard.send')}
           </div>
 
           <div
             style={{
-              color: "var(--muted)",
+              color: 'var(--muted)',
               marginTop: 6,
               fontSize: 14,
             }}
           >
-            Transfer money
+            {t('dashboard.transferMoney')}
           </div>
         </div>
 
@@ -113,17 +122,17 @@ export default function BalanceHero({
           </div>
 
           <div className="action-title">
-            Request
+            {t('dashboard.request')}
           </div>
 
           <div
             style={{
-              color: "var(--muted)",
+              color: 'var(--muted)',
               marginTop: 6,
               fontSize: 14,
             }}
           >
-            Request a payment
+            {t('dashboard.requestPayment')}
           </div>
         </div>
 
@@ -136,17 +145,17 @@ export default function BalanceHero({
           </div>
 
           <div className="action-title">
-            Activity
+            {t('dashboard.activity')}
           </div>
 
           <div
             style={{
-              color: "var(--muted)",
+              color: 'var(--muted)',
               marginTop: 6,
               fontSize: 14,
             }}
           >
-            View transactions
+            {t('dashboard.viewTransactions')}
           </div>
         </div>
       </div>

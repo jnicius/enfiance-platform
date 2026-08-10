@@ -6,10 +6,12 @@ import {
 } from 'react-router-dom';
 
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import AuthLayout from '../components/auth/AuthLayout';
 import PasswordInput from '../components/auth/PasswordInput';
 
 export default function ResetPassword() {
+const { t } = useTranslation();
   const { token } = useParams();
   const navigate = useNavigate();
 
@@ -35,7 +37,7 @@ export default function ResetPassword() {
       confirmPassword
     ) {
       setMessage(
-        'Passwords do not match.'
+        t('resetPassword.passwordsDoNotMatch')
       );
       return;
     }
@@ -59,7 +61,7 @@ export default function ResetPassword() {
     } catch (err) {
       setMessage(
         err?.response?.data?.message ||
-          'Reset failed.'
+          t('resetPassword.failed')
       );
     } finally {
       setLoading(false);
@@ -68,13 +70,13 @@ export default function ResetPassword() {
 
   return (
     <AuthLayout
-      title="Create a new password"
-      subtitle="Choose a strong password to secure your account."
+      title={t('resetPassword.title')}
+      subtitle={t('resetPassword.subtitle')}
       footer={
         <>
-          Remember your password?{' '}
+          {t('resetPassword.rememberPassword')}{' '}
           <Link to="/login">
-            Sign In
+            {t('resetPassword.signIn')}
           </Link>
         </>
       }
@@ -84,14 +86,14 @@ export default function ResetPassword() {
         onSubmit={handleReset}
       >
         <PasswordInput
-          placeholder="New Password"
+          placeholder={t('resetPassword.newPassword')}
           value={password}
           onChange={setPassword}
           required
         />
 
         <PasswordInput
-          placeholder="Confirm Password"
+          placeholder={t('resetPassword.confirmPassword')}
           value={confirmPassword}
           onChange={setConfirmPassword}
           required
@@ -103,8 +105,8 @@ export default function ResetPassword() {
           disabled={loading}
         >
           {loading
-            ? 'Resetting...'
-            : 'Reset Password'}
+            ? t('resetPassword.resetting')
+            : t('resetPassword.resetPassword')}
         </button>
 
         {message && (

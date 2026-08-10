@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import {
   Menu,
@@ -11,6 +12,7 @@ export default function AppHeader({
   onMenu,
 }) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <header className="app-header">
@@ -18,7 +20,7 @@ export default function AppHeader({
         <button
           className="menu-button"
           onClick={onMenu}
-          title="Menu"
+          title={t('navigation.menu')}
         >
           <Menu size={20} />
         </button>
@@ -31,7 +33,7 @@ export default function AppHeader({
       <div className="app-header-right">
         <button
           className="notification-button"
-          title="Notifications"
+          title={t('navigation.notifications')}
         >
           <Bell size={18} />
         </button>
@@ -39,7 +41,7 @@ export default function AppHeader({
         <button
           className="profile-button"
           onClick={() => navigate('/profile')}
-          title="Profile"
+          title={t('navigation.profile')}
         >
           <CircleUserRound
             size={18}

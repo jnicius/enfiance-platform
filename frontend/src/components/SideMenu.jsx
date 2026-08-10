@@ -1,3 +1,6 @@
+import { useTranslation } from 'react-i18next';
+
+import LanguageSelector from './LanguageSelector';
 import './SideMenu.css';
 
 export default function SideMenu({
@@ -5,6 +8,8 @@ export default function SideMenu({
   onClose,
   onLogout,
 }) {
+  const { t } = useTranslation();
+
   return (
     <>
       <div
@@ -19,38 +24,53 @@ export default function SideMenu({
           <button
             className="close-btn"
             onClick={onClose}
+            title={t('navigation.closeMenu')}
+            aria-label={t('navigation.closeMenu')}
           >
             ✕
           </button>
 
           <h2>Enfiance</h2>
 
-          <p>Your Digital Wallet</p>
+          <p>{t('navigation.walletTagline')}</p>
         </div>
 
         <div className="menu-items">
+          <button>
+            🏠 {t('navigation.dashboard')}
+          </button>
 
-          <button>🏠 Dashboard</button>
+          <button>
+            👤 {t('navigation.profile')}
+          </button>
 
-          <button>👤 Profile</button>
+          <button>
+            📜 {t('navigation.transactions')}
+          </button>
 
-          <button>📜 Transactions</button>
+          <button>
+            💸 {t('navigation.paymentRequests')}
+          </button>
 
-          <button>💸 Payment Requests</button>
+          <button>
+            👥 {t('navigation.contacts')}
+          </button>
 
-          <button>👥 Contacts</button>
+          <button>
+            ⚙️ {t('navigation.settings')}
+          </button>
+        </div>
 
-          <button>⚙️ Settings</button>
-
+        <div className="side-menu-language">
+          <LanguageSelector />
         </div>
 
         <button
           className="logout-btn"
           onClick={onLogout}
         >
-          🚪 Logout
+          🚪 {t('navigation.logout')}
         </button>
-
       </div>
     </>
   );

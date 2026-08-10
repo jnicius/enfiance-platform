@@ -72,3 +72,16 @@
 .logout-btn {
   margin: auto 20px 30px;
 }
+
+.side-menu-language {
+  margin: 4px 20px 20px;
+}
+
+.side-menu-language .language-selector {
+  width: 100%;
+}
+
+.side-menu-language .language-select {
+  flex: 1;
+  min-width: 0;
+}
