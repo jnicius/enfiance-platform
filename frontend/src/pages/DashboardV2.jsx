@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import API from '../services/api';
 
@@ -16,6 +17,8 @@ import AppHeader from '../components/AppHeader';
 import SideMenu from '../components/SideMenu';
 
 export default function Dashboard() {
+
+  const { t } = useTranslation();
 
   // -------------------------
   // STATE
@@ -130,7 +133,7 @@ const generateRequest = async () => {
   ) {
 
     setRequestMessage(
-      'Please enter a valid amount'
+      t('dashboard.validRequestAmount')
     );
 
     return;
@@ -184,7 +187,7 @@ const generateRequest = async () => {
 
 
       setRequestMessage(
-        'Payment request created successfully'
+        t('dashboard.paymentRequestCreated')
       );
  
       setRequestAmount('');
@@ -197,7 +200,7 @@ const generateRequest = async () => {
     console.error(error);
 
     setRequestMessage(
-      'Failed to create request'
+      t('dashboard.paymentRequestFailed')
     );
   }
 };
@@ -243,7 +246,7 @@ const generateRequest = async () => {
     );
 
     alert(
-      'Failed to pay request'
+      t('dashboard.payRequestFailed')
     );
   }
 };
@@ -478,7 +481,7 @@ const generateRequest = async () => {
     if (!walletAddress) {
 
       setMessage(
-        'Wallet not found'
+        t('dashboard.walletNotFound')
       );
 
       return;
@@ -515,7 +518,7 @@ const generateRequest = async () => {
       if (!recipient.trim()) {
 
         setMessage(
-          'Recipient required'
+          t('dashboard.recipientRequired')
         );
 
         return;
@@ -527,7 +530,7 @@ const generateRequest = async () => {
       ) {
 
         setMessage(
-          'Invalid amount'
+          t('dashboard.invalidAmount')
         );
 
         return;
@@ -544,7 +547,7 @@ const generateRequest = async () => {
         // -------------------------
 
         setTransferStatus(
-          'Submitting transaction...'
+          t('dashboard.submittingTransaction')
         );
 
         // -------------------------
@@ -567,7 +570,7 @@ const generateRequest = async () => {
         // -------------------------
 
         setTransferStatus(
-          'Confirming on blockchain...'
+          t('dashboard.confirmingTransaction')
         );
 
         // -------------------------
@@ -587,11 +590,11 @@ const generateRequest = async () => {
         // -------------------------
 
         setTransferStatus(
-          'Transfer complete'
+          t('dashboard.transferComplete')
         );
 
         setMessage(
-          'Transfer successful'
+          t('dashboard.transferSuccessful')
         );
 
         // -------------------------
@@ -635,7 +638,7 @@ const generateRequest = async () => {
 
         setMessage(
           error?.response?.data?.message ||
-          'Transfer failed'
+          t('dashboard.transferFailed')
         );
 
       } finally {
@@ -749,7 +752,7 @@ const generateRequest = async () => {
       marginBottom: '10px',
     }}
    >
-     Need to Add Money?
+     {t('dashboard.needAddMoney')}
    </h2>
 
    <p
@@ -759,7 +762,7 @@ const generateRequest = async () => {
        marginBottom: '25px',
      }}
     >
-     Fund your wallet instantly using your debit card or bank account.
+     {t('dashboard.fundWalletDescription')}
     </p>
 
     <button
@@ -775,7 +778,7 @@ const generateRequest = async () => {
         cursor: 'pointer',
       }}
     >
-      Add Funds
+      {t('dashboard.addFunds')}
     </button>
   </div>
 
@@ -791,7 +794,7 @@ const generateRequest = async () => {
     marginTop: '40px',
   }}
 >
-  <h1>Receive Money</h1>
+  <h1>{t('dashboard.receiveMoney')}</h1>
 
   <div
     style={{
@@ -813,7 +816,7 @@ const generateRequest = async () => {
     textAlign: 'center',
   }}
 >
-  Share your username to receive money instantly.
+  {t('dashboard.shareUsername')}
 </p>
 
 
@@ -839,7 +842,7 @@ const generateRequest = async () => {
       marginBottom: '5px',
     }}
   >
-    Account ID
+    {t('dashboard.accountId')}
   </div>
 
   <div
@@ -869,7 +872,7 @@ const generateRequest = async () => {
           );
 
           setMessage(
-            'Username copied'
+            t('dashboard.usernameCopied')
           );
         }}
         style={{
@@ -881,7 +884,7 @@ const generateRequest = async () => {
           cursor: 'pointer',
         }}
       >
-        Copy Username
+        {t('dashboard.copyUsername')}
       </button>
 
       <button
@@ -891,7 +894,7 @@ const generateRequest = async () => {
           );
 
           setMessage(
-            'Account copied'
+            t('dashboard.accountCopied')
           );
         }}
         style={{
@@ -903,7 +906,7 @@ const generateRequest = async () => {
           cursor: 'pointer',
         }}
       >
-        Copy Account
+        {t('dashboard.copyAccount')}
       </button>
     </div>
   </div>
@@ -923,11 +926,11 @@ const generateRequest = async () => {
         }}
       >
 
-        <h1>Send Money</h1>
+        <h1>{t('dashboard.sendMoney')}</h1>
 
         <input
           type="text"
-          placeholder="@username or account"
+          placeholder={t('dashboard.recipientPlaceholder')}
           value={recipient}
           onChange={(e) =>
             setRecipient(e.target.value)
@@ -947,7 +950,7 @@ const generateRequest = async () => {
 
         <input
           type="number"
-          placeholder="Amount"
+          placeholder={t('dashboard.amount')}
           value={amount}
           onChange={(e) =>
             setAmount(
@@ -967,7 +970,7 @@ const generateRequest = async () => {
        />
 
        <textarea
-         placeholder="Message"
+         placeholder={t('dashboard.message')}
          value={message}
          onChange={(e) =>
            setMessage(
@@ -1011,8 +1014,8 @@ const generateRequest = async () => {
 
           {
             loading
-              ? transferStatus || 'Processing...'
-              : 'Send Money'
+              ? transferStatus || t('dashboard.processing')
+              : t('dashboard.sendMoney')
           }
 
         </button>
@@ -1050,7 +1053,7 @@ const generateRequest = async () => {
           marginTop: '40px',
         }}
        >
-        <h1>Request Payment</h1>
+        <h1>{t('dashboard.requestPayment')}</h1>
 
   <p
    style={{
@@ -1059,12 +1062,12 @@ const generateRequest = async () => {
      marginBottom: '20px',
    }}
  >
-  Create a payment request and share it with friends, family, or customers.
+  {t('dashboard.requestDescription')}
 </p>
   
   <input
     type="text"
-    placeholder="Recipient Username or Email"
+    placeholder={t('dashboard.recipientUsernameEmail')}
     value={requestRecipient}
     onChange={(e) =>
       setRequestRecipient(
@@ -1084,7 +1087,7 @@ const generateRequest = async () => {
   />
   
   <textarea
-    placeholder="Message (optional)"
+    placeholder={t('dashboard.messageOptional')}
     value={requestNote}
     onChange={(e) =>
       setRequestNote(
@@ -1106,7 +1109,7 @@ const generateRequest = async () => {
 
   <input
   type="number"
-  placeholder="Amount"
+  placeholder={t('dashboard.amount')}
   value={requestAmount}
   onChange={(e) =>
     setRequestAmount(
@@ -1140,7 +1143,7 @@ const generateRequest = async () => {
       cursor: 'pointer',
     }}
   >
-    Send Request
+    {t('dashboard.sendRequest')}
   </button>
 
 
@@ -1183,7 +1186,7 @@ const generateRequest = async () => {
           marginBottom: '10px',
         }}
       >
-        Request Created
+        {t('dashboard.requestCreated')}
       </div>
 
   
@@ -1218,7 +1221,7 @@ const generateRequest = async () => {
 >
 
   <h1>
-    Pending Requests
+    {t('dashboard.pendingRequests')}
   </h1>
 
   {
@@ -1231,7 +1234,7 @@ const generateRequest = async () => {
             color: '#aaa',
           }}
         >
-          No requests yet
+          {t('dashboard.noRequestsYet')}
         </p>
 
       )
@@ -1277,7 +1280,13 @@ const generateRequest = async () => {
                   marginTop: '5px',
                 }}
               >
-                {request.status}
+                {
+                  request.status === 'pending'
+                    ? t('dashboard.statusPending')
+                    : request.status === 'paid'
+                      ? t('dashboard.statusPaid')
+                      : request.status
+                }
               </div>
 
             </div>
@@ -1298,7 +1307,7 @@ const generateRequest = async () => {
   }}
 >
 
-  <h1>Incoming Requests</h1>
+  <h1>{t('dashboard.incomingRequests')}</h1>
 
   {
     incomingRequests.length === 0
@@ -1308,7 +1317,7 @@ const generateRequest = async () => {
             color: '#aaa',
           }}
         >
-          No incoming requests
+          {t('dashboard.noIncomingRequests')}
         </p>
       )
       : (
@@ -1326,18 +1335,18 @@ const generateRequest = async () => {
             >
 
               <div>
-                <strong>From:</strong>{' '}
+                <strong>{t('dashboard.from')}:</strong>{' '}
                 {request.requesterUsername}
               </div>
 
               <div>
-                <strong>Amount:</strong>{' '}
+                <strong>{t('dashboard.amount')}:</strong>{' '}
                 ${request.amount}
               </div>
 
               <div>
-                <strong>Message:</strong>{' '}
-                {request.message || 'No message'}
+                <strong>{t('dashboard.message')}:</strong>{' '}
+                {request.message || t('dashboard.noMessage')}
               </div>
 
               <button
@@ -1357,7 +1366,7 @@ const generateRequest = async () => {
                   cursor: 'pointer',
                 }}
               >
-                Pay Request
+                {t('dashboard.payRequest')}
               </button>
               </div>
           )
@@ -1385,7 +1394,7 @@ const generateRequest = async () => {
             marginBottom: '15px',
           }}
         >
-          Recent Contacts
+          {t('dashboard.recentContacts')}
         </h3>
 
         {
@@ -1399,7 +1408,7 @@ const generateRequest = async () => {
                 color: '#aaa',
               }}
             >
-              No contacts yet
+              {t('dashboard.noContactsYet')}
             </p>
 
           )
@@ -1453,7 +1462,7 @@ const generateRequest = async () => {
                 >
                   {
                     contact.recipientName ||
-                    'Enfiance User'
+                    t('dashboard.enfianceUser')
                   }
                 </div>
 
@@ -1485,7 +1494,7 @@ const generateRequest = async () => {
 >
 
   <h1>
-    Transaction Summary
+    {t('dashboard.transactionSummary')}
   </h1>
 
   <div
@@ -1498,9 +1507,7 @@ const generateRequest = async () => {
   >
 
     <div>
-      <h3>
-        Received
-      </h3>
+      <h3>{t('dashboard.received')}</h3>
 
       <p
         style={{
@@ -1515,9 +1522,7 @@ const generateRequest = async () => {
     </div>
 
     <div>
-      <h3>
-        Sent
-      </h3>
+      <h3>{t('dashboard.sent')}</h3>
 
       <p
         style={{
@@ -1532,9 +1537,7 @@ const generateRequest = async () => {
     </div>
 
     <div>
-      <h3>
-        Net Flow
-      </h3>
+      <h3>{t('dashboard.netFlow')}</h3>
 
       <p
         style={{
@@ -1567,13 +1570,13 @@ const generateRequest = async () => {
           marginTop: '40px',
         }}
        >
-      <h1>Recent Activity</h1>
+      <h1>{t('dashboard.recentActivity')}</h1>
 
      {
         history.length === 0
           ? (
             <p style={{ color: '#aaa' }}>
-              No transactions yet
+              {t('dashboard.noTransactionsYet')}
             </p>
           )
           : (
@@ -1597,8 +1600,12 @@ const generateRequest = async () => {
             >
               {
                 tx.sender === walletAddress
-                  ? `Sent $${tx.amount}`
-                  : `Received $${tx.amount}`
+                  ? t('dashboard.sentAmount', {
+                        amount: tx.amount,
+                      })
+                  : t('dashboard.receivedAmount', {
+                        amount: tx.amount,
+                      })
               }
             </div>
 
@@ -1609,18 +1616,20 @@ const generateRequest = async () => {
               }}
             >
               {
-                tx.sender === walletAddress
-                  ? `To ${
-                      tx.recipient_username
-                        ? `@${tx.recipient_username}`
-                        : tx.recipient
-                   }`
-                 : `From ${
-                     tx.sender_username
-                     ? `@${tx.sender_username}`
-                     : tx.sender
-                   }`
-              }
+                  tx.sender === walletAddress
+                    ? t('dashboard.toRecipient', {
+                        recipient:
+                          tx.recipient_username
+                            ? `@${tx.recipient_username}`
+                            : tx.recipient,
+                      })
+                    : t('dashboard.fromSender', {
+                        sender:
+                          tx.sender_username
+                            ? `@${tx.sender_username}`
+                            : tx.sender,
+                      })
+                }
             </div>
 
             <div
@@ -1654,14 +1663,14 @@ const generateRequest = async () => {
         }}
       >
 
-        <h2>Account Status</h2>
+        <h2>{t('dashboard.accountStatus')}</h2>
 
         <h1
           style={{
             color: '#67e667',
           }}
         >
-          Verified & Active
+          {t('dashboard.verifiedActive')}
         </h1>
 
       </div>

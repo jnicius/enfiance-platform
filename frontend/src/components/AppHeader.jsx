@@ -25,7 +25,7 @@ export default function AppHeader({
           <Menu size={20} />
         </button>
 
-        <div className="brand">
+        <div className="brand notranslate" translate="no">
           ENFIANCE
         </div>
       </div>

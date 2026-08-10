@@ -56,7 +56,7 @@ export default function LanguageSelector() {
         id="enfiance-language"
         value={currentLanguage}
         onChange={handleChange}
-        className="language-select"
+        className="language-select notranslate" translate="no"
         aria-label={t('common.language')}
       >
         {languages.map(

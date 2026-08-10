@@ -30,7 +30,7 @@ export default function SideMenu({
             ✕
           </button>
 
-          <h2>Enfiance</h2>
+          <h2 className="notranslate" translate="no">Enfiance</h2>
 
           <p>{t('navigation.walletTagline')}</p>
         </div>
