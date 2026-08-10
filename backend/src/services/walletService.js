@@ -139,15 +139,6 @@ async function sendUSDC(
         )
       );
 
-    console.log(
-      'SENDER KEYPAIR OK'
-    );
-
-    console.log(
-      'SENDER WALLET:',
-      sender.publicKey.toString()
-    );
-
     // -------------------------
     // RECIPIENT
     // -------------------------
@@ -166,19 +157,11 @@ async function sendUSDC(
         USDC_MINT,
         sender.publicKey
       );
-      console.log(
-        'SENDER TOKEN ACCOUNT:',
-        senderTokenAccount.toString()
-      );
     const recipientTokenAccount =
       await getAssociatedTokenAddress(
         USDC_MINT,
         recipient
       );
-    console.log(
-      'RECIPIENT TOKEN ACCOUNT:',
-      recipientTokenAccount.toString()
-    );
     const transaction =
       new Transaction();
 
@@ -190,10 +173,6 @@ async function sendUSDC(
       await connection.getAccountInfo(
         recipientTokenAccount
       );
-    console.log(
-      'RECIPIENT ACCOUNT EXISTS:',
-      !!recipientAccountInfo
-    );
     if (!recipientAccountInfo) {
 
       transaction.add(
@@ -228,19 +207,12 @@ async function sendUSDC(
     // -------------------------
     // SEND TRANSACTION
     // -------------------------
-    console.log(
-      'SENDING TRANSACTION...'
-    );
     const signature =
       await sendAndConfirmTransaction(
         connection,
         transaction,
         [sender]
       );
-    console.log(
-      'TX SIGNATURE:',
-      signature
-    );
     return signature;
 
   } catch (error) {

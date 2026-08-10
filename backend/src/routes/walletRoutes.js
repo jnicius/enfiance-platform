@@ -185,16 +185,6 @@ router.post(
             .encryptedKey
         );
 
-      console.log(
-        'AUTH USER:',
-        senderUser.username
-      );
-
-      console.log(
-        'SENDER WALLET:',
-        senderWallet
-      );
-
       // -------------------------
       // RESOLVE @USERNAME
       // -------------------------
@@ -208,11 +198,6 @@ router.post(
             .replace('@', '')
             .trim()
             .toLowerCase();
-
-        console.log(
-          'USERNAME LOOKUP:',
-          username
-        );
 
         recipientUser =
           await prisma.user.findFirst({
@@ -232,11 +217,6 @@ router.post(
               wallet: true,
             },
           });
-
-        console.log(
-          'USER RESULT:',
-          recipientUser
-        );
 
         if (
           !recipientUser ||
@@ -372,11 +352,6 @@ router.post(
           senderWallet
         );
 
-      console.log(
-        'LIVE USDC BALANCE:',
-        liveBalance
-      );
-
       if (liveBalance < amount) {
         return res.status(400).json({
           success: false,
@@ -385,25 +360,12 @@ router.post(
         });
       }
 
-      console.log(
-        'SENDING LIVE USDC:',
-        amount,
-        senderWallet,
-        '→',
-        recipientWallet
-      );
-
       const signature =
         await sendUSDC(
           senderSecretKey,
           recipientWallet,
           amount
         );
-
-      console.log(
-        'SOLANA SEND RESULT:',
-        signature
-      );
 
       // -------------------------
       // SAVE CONTACT
