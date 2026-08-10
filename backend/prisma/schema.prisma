@@ -151,3 +151,27 @@ model PaymentRequest {
   @@index([recipientId])
   @@index([status])
 }
+
+model TransferRequest {
+  id String @id @default(uuid())
+
+  userId String
+
+  requestId String
+
+  recipient String
+
+  amount Float
+
+  status String @default("processing")
+
+  signature String?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, requestId])
+  @@index([userId])
+  @@index([status])
+}
