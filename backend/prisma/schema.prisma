@@ -96,6 +96,8 @@ model Transaction {
 model TransactionHistory {
   id String @id @default(uuid())
 
+  requestId String? @unique
+
   sender String
 
   sender_username String?
