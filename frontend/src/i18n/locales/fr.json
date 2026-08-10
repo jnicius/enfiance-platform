@@ -1,0 +1,45 @@
+{
+  "common": {
+    "language": "Langue",
+    "english": "English",
+    "haitianCreole": "Kreyòl",
+    "french": "Français",
+    "signIn": "Se connecter",
+    "signOut": "Se déconnecter",
+    "cancel": "Annuler",
+    "continue": "Continuer",
+    "loading": "Chargement..."
+  },
+  "navigation": {
+    "dashboard": "Tableau de bord",
+    "profile": "Profil",
+    "contacts": "Contacts",
+    "activity": "Activité"
+  },
+  "money": {
+    "balance": "Solde",
+    "addMoney": "Ajouter de l'argent",
+    "sendMoney": "Envoyer de l'argent",
+    "requestMoney": "Demander de l'argent"
+  },
+  "auth": {
+    "createAccount": "Créer un compte",
+    "forgotPassword": "Mot de passe oublié ?",
+    "resetPassword": "Réinitialiser le mot de passe",
+    "newPassword": "Nouveau mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "passwordsDoNotMatch": "Les mots de passe ne correspondent pas."
+  },
+  "login": {
+    "title": "Bon retour",
+    "subtitle": "Connectez-vous pour accéder à votre compte Enfiance.",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "forgotPassword": "Mot de passe oublié ?",
+    "signingIn": "Connexion...",
+    "signIn": "Se connecter",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "createOne": "Créer un compte",
+    "failed": "Échec de la connexion"
+  }
+}

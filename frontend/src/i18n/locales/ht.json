@@ -1,0 +1,45 @@
+{
+  "common": {
+    "language": "Lang",
+    "english": "English",
+    "haitianCreole": "Kreyòl",
+    "french": "Français",
+    "signIn": "Konekte",
+    "signOut": "Dekonekte",
+    "cancel": "Anile",
+    "continue": "Kontinye",
+    "loading": "Ap chaje..."
+  },
+  "navigation": {
+    "dashboard": "Tablo",
+    "profile": "Pwofil",
+    "contacts": "Kontak",
+    "activity": "Aktivite"
+  },
+  "money": {
+    "balance": "Balans",
+    "addMoney": "Ajoute Lajan",
+    "sendMoney": "Voye Lajan",
+    "requestMoney": "Mande Lajan"
+  },
+  "auth": {
+    "createAccount": "Kreye Kont",
+    "forgotPassword": "Ou bliye modpas ou?",
+    "resetPassword": "Reyajiste Modpas",
+    "newPassword": "Nouvo Modpas",
+    "confirmPassword": "Konfime Modpas",
+    "passwordsDoNotMatch": "Modpas yo pa menm."
+  },
+  "login": {
+    "title": "Byenvini ankò",
+    "subtitle": "Konekte pou antre nan kont Enfiance ou.",
+    "email": "Imèl",
+    "password": "Modpas",
+    "forgotPassword": "Ou bliye modpas ou?",
+    "signingIn": "Ap konekte...",
+    "signIn": "Konekte",
+    "noAccount": "Ou poko gen yon kont?",
+    "createOne": "Kreye youn",
+    "failed": "Koneksyon an echwe"
+  }
+}

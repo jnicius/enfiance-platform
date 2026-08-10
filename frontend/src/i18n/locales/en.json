@@ -1,0 +1,45 @@
+{
+  "common": {
+    "language": "Language",
+    "english": "English",
+    "haitianCreole": "Kreyòl",
+    "french": "Français",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "loading": "Loading..."
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "contacts": "Contacts",
+    "activity": "Activity"
+  },
+  "money": {
+    "balance": "Balance",
+    "addMoney": "Add Money",
+    "sendMoney": "Send Money",
+    "requestMoney": "Request Money"
+  },
+  "auth": {
+    "createAccount": "Create Account",
+    "forgotPassword": "Forgot Password?",
+    "resetPassword": "Reset Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "passwordsDoNotMatch": "Passwords do not match."
+  },
+  "login": {
+    "title": "Welcome back",
+    "subtitle": "Sign in to access your Enfiance account.",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "signingIn": "Signing in...",
+    "signIn": "Sign In",
+    "noAccount": "Don't have an account?",
+    "createOne": "Create one",
+    "failed": "Login failed"
+  }
+}

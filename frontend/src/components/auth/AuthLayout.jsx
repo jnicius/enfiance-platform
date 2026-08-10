@@ -1,4 +1,5 @@
 import '../../styles/auth.css';
+import LanguageSelector from '../LanguageSelector';
 
 export default function AuthLayout({
   title,
@@ -10,7 +11,11 @@ export default function AuthLayout({
     <div className="auth-page">
       <div className="auth-container">
 
-        <div className="auth-logo">
+        <div className="auth-language-row">
+      <LanguageSelector />
+    </div>
+
+    <div className="auth-logo">
           ENFIANCE
         </div>
 

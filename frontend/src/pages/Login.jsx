@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import API from '../services/api';
 import AuthLayout from '../components/auth/AuthLayout';
 
 export default function Login() {
+const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -38,7 +40,7 @@ export default function Login() {
 
       setError(
         err?.response?.data?.message ||
-          'Login failed'
+          t('login.failed')
       );
     } finally {
       setLoading(false);
@@ -47,13 +49,13 @@ export default function Login() {
 
   return (
     <AuthLayout
-      title="Welcome back"
-      subtitle="Sign in to access your Enfiance account."
+      title={t('login.title')}
+      subtitle={t('login.subtitle')}
       footer={
         <>
-          Don't have an account?{' '}
+          {t('login.noAccount')}{' '}
           <Link to="/register">
-            Create one
+            {t('login.createOne')}
           </Link>
         </>
       }
@@ -65,7 +67,7 @@ export default function Login() {
         <input
           className="auth-input"
           type="email"
-          placeholder="Email"
+          placeholder={t('login.email')}
           value={email}
           onChange={(e) =>
             setEmail(e.target.value)
@@ -76,7 +78,7 @@ export default function Login() {
         <input
           className="auth-input"
           type="password"
-          placeholder="Password"
+          placeholder={t('login.password')}
           value={password}
           onChange={(e) =>
             setPassword(e.target.value)
@@ -99,7 +101,7 @@ export default function Login() {
               textDecoration: 'none',
             }}
           >
-            Forgot password?
+            {t('login.forgotPassword')}
           </Link>
         </div>
 
@@ -109,8 +111,8 @@ export default function Login() {
           disabled={loading}
         >
           {loading
-            ? 'Signing in...'
-            : 'Sign In'}
+            ? t('login.signingIn')
+            : t('login.signIn')}
         </button>
 
         {error && (
